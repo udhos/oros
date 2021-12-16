@@ -1,0 +1,28 @@
+space: example
+enable: on
+item: client
+name: dummy1
+plugin: dummy
+auth:
+  token: secret
+---
+space: example
+enable: on
+item: dummy1.file
+name: myfile1
+id: "{{input.base_dir}}/file1"
+stack: stack1
+---
+space: example
+enable: on
+item: stack
+name: stack1
+input:
+  base_dir: /tmp
+---
+space: example
+enable: on
+item: instance
+name: mystack1
+input:
+  base_dir: /tmp/x
