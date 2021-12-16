@@ -2,15 +2,22 @@ space: example
 enable: on
 item: client
 name: dummy1
-plugin: dummy
+plugin: filesystem
 auth:
   token: secret
 ---
 space: example
 enable: on
+item: dummy1.dir
+name: mydir1
+path: "{input(base_dir)}/dir1"
+stack: stack1
+---
+space: example
+enable: on
 item: dummy1.file
 name: myfile1
-id: "{{input.base_dir}}/file1"
+path: "{field(dummy1.dir,mydir1,path)}/file1"
 stack: stack1
 ---
 space: example
@@ -24,5 +31,6 @@ space: example
 enable: on
 item: instance
 name: mystack1
+model: stack1
 input:
   base_dir: /tmp/x
